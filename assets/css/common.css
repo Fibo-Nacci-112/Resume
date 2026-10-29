@@ -1,0 +1,158 @@
+/* additional resets */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  line-height: 1.33;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-align: center;
+  width: 100vw;
+}
+/* additional resets */
+
+/* Header */
+.mv_header {
+    width: 100%;
+    min-height: 70px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 5svh;
+    transition: transform 2s ease;
+    z-index: 1000;
+    position: fixed;
+    top: 0;
+}
+
+.header_left {
+    display: flex;
+    gap: 3vw;
+    align-items: center;
+    position: absolute;
+    top: 30vh;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.header_right {
+    position: absolute;
+    top: 70vh;
+    right: 50%;
+    transform: translateX(50%);
+    width: fit-content;
+}
+
+.header_logo {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+.header_logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.header_name {
+    font-size: 3vw;
+    font-weight: 500;
+    line-height: 1.5;
+    height: 1.5em;
+    text-shadow: 0 0 5px #ffffff80;
+    overflow: hidden;
+    position: relative;
+    padding: 0 10px;
+    background: linear-gradient(
+      to bottom,
+      #ffffff00 0%,
+      #ffffff10 20%,
+      #ffffff10 80%,
+      #ffffff00 100%
+    );
+}
+
+.mv_header.headerized .header_name {
+    font-size: 24px;
+}
+
+.nav_list {
+    display: flex;
+    gap: 40px;
+    background: #ffffffcc;
+    box-shadow: 0 0 10px #ffffff29;
+    border-radius: 100vmax;
+    padding: 13px 40px;
+    color: #333;
+    font-size: 18px;
+}
+
+.nav_list li {
+  height: 1.33em;
+  overflow: hidden;
+}
+
+.nav_list li a {
+  display: block;
+  cursor: pointer;
+  line-height: 1.33;
+  transition: transform 0.3s ease-in-out;
+
+}
+
+.nav_list li:hover a {
+  transform: translateY(-2.66em);
+}
+/* Header end */
+
+/* Common background */
+
+html {
+  overflow-x: hidden;
+}
+
+.gradient-background {
+  overflow: clip;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gradient-background::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    135deg,
+    #082567 0%,
+    #000000cc 20%,
+    #082567 50%,
+    #000000cc 100%
+  );
+  filter: brightness(0.3);
+  z-index: -1;
+  animation: moveBackAndForth 20s infinite alternate ease;
+}
+
+@keyframes moveBackAndForth {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+}
+/* Common background end */
+
+/* scrollSmoother */
+
+/* scrollSmoother end */

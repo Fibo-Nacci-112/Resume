@@ -15,7 +15,6 @@ $(document).ready(function() {
       char.innerHTML = `${letter}<br>${letter}<br>${letter}`;
     });
   }
-  console.log(splitName.chars);
 
   duplicateCharacters(splitName);
 

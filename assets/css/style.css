@@ -474,3 +474,15 @@
   margin: 6vh 0;
 }
 /* #endregion horizontal section end */
+
+/* #region Contact */
+.ct_container {
+  max-width: 1240px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.ct_ttl {
+  font-size: 60px;
+}
+/* #endregion Contact */

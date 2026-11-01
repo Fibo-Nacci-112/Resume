@@ -2,9 +2,9 @@
 emailjs.init({
   publicKey: "KNzIBexpfnNcvwCQF",
   blockHeadless: true,          // Blocks automated script bots (Selenium, Puppeteer)
-  limitRate: {
-    throttle: 60000,            // Limits submissions to 1 per minute per user session
-  },
+  // limitRate: {
+  //   throttle: 60000,            // Limits submissions to 1 per minute per user session
+  // },
 });
 
 const form = document.getElementById('contact-form');

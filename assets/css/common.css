@@ -151,6 +151,17 @@ html {
     transform: translate(0, 0);
   }
 }
+
+@media screen and (max-width: 767px) {
+  .header_left {
+    gap: 10px;
+  }
+
+  .header_logo {
+    width: 100px;
+    height: 100px;
+  }
+}
 /* Common background end */
 
 /* scrollSmoother */

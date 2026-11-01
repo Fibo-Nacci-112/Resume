@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // SCROLL TO TOP ON REFRESH
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
@@ -29,8 +29,6 @@ $(document).ready(function() {
     })
     .set(splitName.chars, { y: "0em" }); //resets back to initial state
 
-
-
   const headerTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".header_trigger",
@@ -40,40 +38,77 @@ $(document).ready(function() {
     },
   });
 
-  headerTimeline
-    .to(".header_left", {
-      top: "50%",
-      left: "20px",
-      gap: "20px",
-      x: 0,
-      yPercent: -50,
-      xPercent: 0,
-    })
-    .to(
-      ".header_right",
-      {
+  if ($(window).width() > 767) {
+    headerTimeline
+      .to(".header_left", {
         top: "50%",
-        right: "20px",
-        yPercent: -50,
+        left: "20px",
+        gap: "20px",
         x: 0,
-      },
-      0,
-    )
-    .to(
-      ".header_logo",
-      {
-        width: "70px",
-        height: "70px",
-      },
-      0,
-    )
-    .to(
-      ".header_name",
-      {
-        fontSize: "24px",
-      },
-      0,
-    );
+        yPercent: -50,
+        xPercent: 0,
+      })
+      .to(
+        ".header_right",
+        {
+          top: "50%",
+          right: "20px",
+          yPercent: -50,
+          x: 0,
+        },
+        0,
+      )
+      .to(
+        ".header_logo",
+        {
+          width: "70px",
+          height: "70px",
+        },
+        0,
+      )
+      .to(
+        ".header_name",
+        {
+          fontSize: "24px",
+        },
+        0,
+      );
+  } else {
+    headerTimeline
+      .to(".header_left", {
+        top: "50%",
+        left: "20px",
+        gap: "20px",
+        x: 0,
+        yPercent: -50,
+        xPercent: 0,
+      })
+      .to(
+        ".header_right",
+        {
+          top: "50%",
+          right: "20px",
+          yPercent: -50,
+          x: 0,
+        },
+        0,
+      )
+      .to(
+        ".header_logo",
+        {
+          width: "60px",
+          height: "60px",
+        },
+        0,
+      )
+      .to(
+        ".header_name",
+        {
+          fontSize: "20px",
+        },
+        0,
+      );
+  }
 
   const $html = {
     title: "HTML",

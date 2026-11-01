@@ -485,4 +485,14 @@
 .ct_ttl {
   font-size: 60px;
 }
+
+.submit_btn {
+  border: 1px solid #333;
+  background-color: #ffffffcc;
+  border-radius: 4px;
+  padding: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
 /* #endregion Contact */

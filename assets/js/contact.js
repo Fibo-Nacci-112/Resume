@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
     event.preventDefault();
     
     const emailInput = form.querySelector('input[name="email"]');
-    const companyInput = form.querySelector('input[name="company"]');
+    const companyInput = form.querySelector('input[name="name"]');
     const messageInput = form.querySelector('textarea[name="message"]');
 
     // 2. Strict Email Regex Check

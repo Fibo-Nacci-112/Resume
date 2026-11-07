@@ -17,23 +17,44 @@ $(document).ready(function () {
   // Smooth scroll with Lenis
 
   // Projects section
-  gsap.fromTo(
-    ".projects_bg",
-    {
-      maxWidth: "80%",
-      borderRadius: "40px",
-    },
-    {
-      maxWidth: "100%",
-      borderRadius: "0%",
-      scrollTrigger: {
-        trigger: ".projects_bg",
-        start: "top 90%",
-        end: "top 10%",
-        scrub: 1,
+  if (window.innerWidth >= 768) {
+    gsap.fromTo(
+      ".projects_bg",
+      {
+        maxWidth: "80%",
+        borderRadius: "40px",
       },
-    },
-  );
+      {
+        maxWidth: "100%",
+        borderRadius: "0%",
+        scrollTrigger: {
+          trigger: ".projects_bg",
+          start: "top 90%",
+          end: "top 10%",
+          scrub: 1,
+        },
+      },
+    );
+  } else {
+    gsap.fromTo(
+      ".projects_bg",
+      {
+        maxWidth: "80%",
+        borderRadius: "10px",
+      },
+      {
+        maxWidth: "100%",
+        borderRadius: "0%",
+        scrollTrigger: {
+          trigger: ".projects_bg",
+          start: "top 90%",
+          end: "top 10%",
+          scrub: 1,
+        },
+      },
+    );
+
+  }
 
   // gsap.fromTo(
   //   ".projects_bg_float",
@@ -107,8 +128,6 @@ $(document).ready(function () {
   //
 
   // Horizontal Scroll
-  
-
   const horiTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".hori_sect",

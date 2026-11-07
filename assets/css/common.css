@@ -31,12 +31,20 @@ body {
 
 .header_left {
     display: flex;
-    gap: 3vw;
+    gap: 20px;
     align-items: center;
     position: absolute;
     top: 30vh;
     left: 50%;
     transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-top-right-radius: 100vmax;
+    border-bottom-right-radius: 100vmax;
+    width: max-content;
 }
 
 .header_right {
@@ -48,8 +56,8 @@ body {
 }
 
 .header_logo {
-    width: 200px;
-    height: 200px;
+    max-width: 20vw;
+    aspect-ratio: 1 / 1;
     overflow: hidden;
 }
 
@@ -60,21 +68,14 @@ body {
 }
 
 .header_name {
-    font-size: 3vw;
+    font-size: 5vw;
     font-weight: 500;
     line-height: 1.5;
     height: 1.5em;
-    text-shadow: 0 0 5px #ffffff80;
+    color: #000;
     overflow: hidden;
     position: relative;
-    padding: 0 10px;
-    background: linear-gradient(
-      to bottom,
-      #ffffff00 0%,
-      #ffffff10 20%,
-      #ffffff10 80%,
-      #ffffff00 100%
-    );
+    padding: 0 40px 0 0;
 }
 
 .mv_header.headerized .header_name {
@@ -84,17 +85,21 @@ body {
 .nav_list {
     display: flex;
     gap: 40px;
-    background: #ffffffcc;
-    box-shadow: 0 0 10px #ffffff29;
+    align-items: center;
+    min-height: 70px;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 100vmax;
     padding: 13px 40px;
-    color: #333;
+    color: #000;
     font-size: 18px;
 }
 
 .nav_list li {
   height: 1.33em;
-  overflow: hidden;
 }
 
 .nav_list li a {
@@ -102,11 +107,17 @@ body {
   cursor: pointer;
   line-height: 1.33;
   transition: transform 0.3s ease-in-out;
-
 }
 
 .nav_list li:hover a {
-  transform: translateY(-2.66em);
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+@media screen and (max-width: 767px) {
+  .nav_list {
+    min-height: 60px;;
+  }
 }
 /* Header end */
 
@@ -132,14 +143,21 @@ html {
   height: 200%;
   background: linear-gradient(
     135deg,
-    #082567 0%,
+    #003135 0%,
     #000000cc 20%,
-    #082567 50%,
+    #003135 50%,
     #000000cc 100%
   );
+  /* background: linear-gradient(
+    135deg,
+    #afdde5 0%,
+    #ffffffcc 20%,
+    #afdde5 50%,
+    #ffffffcc 100%
+  ); */
   filter: brightness(0.3);
   z-index: -1;
-  animation: moveBackAndForth 20s infinite alternate ease;
+  animation: moveBackAndForth 25s infinite alternate ease;
 }
 
 @keyframes moveBackAndForth {
@@ -153,13 +171,12 @@ html {
 }
 
 @media screen and (max-width: 767px) {
-  .header_left {
-    gap: 10px;
+  .mv_header {
+    min-height: 60px;
   }
 
-  .header_logo {
-    width: 100px;
-    height: 100px;
+  .header_left {
+    gap: 15px;
   }
 }
 /* Common background end */

@@ -7,7 +7,7 @@ $(document).ready(function () {
   // Force scroll to top immediately when the page loads
   window.scrollTo(0, 0);
 
-  splitName = new SplitText(".header_name", { type: "chars" });
+  const splitName = new SplitText(".header_name", { type: "chars" });
   function duplicateCharacters(splitInstance) {
     splitInstance.chars.forEach((char) => {
       const letter = char.textContent;
@@ -78,7 +78,7 @@ $(document).ready(function () {
       .to(".header_left", {
         top: "50%",
         left: "20px",
-        gap: "20px",
+        gap: "10px",
         x: 0,
         yPercent: -50,
         xPercent: 0,
@@ -111,42 +111,70 @@ $(document).ready(function () {
   }
 
   const $html = {
+    logo: "./assets/images/html-5.svg",
+    altName: "HTML",
     title: "HTML",
     paragraph:
       "As HTML is the very fundamental thing for web development, I have used it in all 60 of the projects I've laid my hands on.",
   };
 
   const $css = {
+    logo: "./assets/images/css-3.svg",
+    altName: "CSS",
     title: "CSS",
     paragraph:
       "I've been building websites that are responsive, interactive, visually appealing and seamless using css. I've worked on 42 responsive websites, and 7 animation websites using keyframes. Also, I make sure the code i wrote run across all browsers.",
   };
 
   const $javascript = {
+    logo: "./assets/images/javascript.svg",
+    altName: "JavaScript",
     title: "JavaScript",
     paragraph:
       "I've been working with javascript for 2 years now. I use not just the fundamentals. I use es6 features as well.",
   };
 
   const $git = {
+    logo: "./assets/images/git.svg",
+    altName: "Git",
     title: "Git",
     paragraph:
       "I use Git for version control to track code changes, collaborate seamlessly, and manage project history efficiently.",
   };
 
   const $wordpress = {
+    logo: "./assets/images/wordpress.svg",
+    altName: "WordPress",
     title: "WordPress",
     paragraph:
       "I build custom, user-friendly WordPress sites and manage themes to deliver functional content management solutions.",
   };
 
   const $gsap = {
+    logo: "./assets/images/gsap.svg",
+    altName: "GSAP",
     title: "GSAP",
     paragraph:
       "I use GreenSock (GSAP) to create high-performance, smooth, and complex animations that elevate user experience.",
   };
 
   const $others = {
+    logo: "./assets/images/others.svg",
+    altName: "Other Tools",
+    title: "Other Tools",
+    paragraph:
+      "I am familiar with various auxiliary tools and workflows that streamline modern web development.",
+  };
+  const $react = {
+    logo: "./assets/images/others.svg",
+    altName: "Other Tools",
+    title: "Other Tools",
+    paragraph:
+      "I am familiar with various auxiliary tools and workflows that streamline modern web development.",
+  };
+  const $typescript = {
+    logo: "./assets/images/others.svg",
+    altName: "Other Tools",
     title: "Other Tools",
     paragraph:
       "I am familiar with various auxiliary tools and workflows that streamline modern web development.",
@@ -163,54 +191,77 @@ $(document).ready(function () {
     const $activeBtn = $(".tools_slide.swiper-slide-active");
     const toolKey = $activeBtn.data("tool");
 
-    let title, paragraph, proficiencyHeight, barColor;
+    let logo, altName, title, paragraph, proficiencyHeight, barColor;
 
-    // Assign content, height, percentage, and official brand colors for each tool
+
     switch (toolKey) {
       case "html":
+        logo = $html.logo;
+        altName = $html.altName;
         title = $html.title;
         paragraph = $html.paragraph;
         proficiencyHeight = "70%";
         barColor = "#E34F26";
         break;
+
       case "css":
+        logo = $css.logo;
+        altName = $css.altName;
         title = $css.title;
         paragraph = $css.paragraph;
         proficiencyHeight = "80%";
         barColor = "#1572B6";
         break;
+
       case "javascript":
       case "js":
+        logo = $javascript.logo;
+        altName = $javascript.altName;
         title = $javascript.title;
         paragraph = $javascript.paragraph;
         proficiencyHeight = "60%";
         barColor = "#F7DF1E";
         break;
+
       case "git":
+        logo = $git.logo;
+        altName = $git.altName;
         title = $git.title;
         paragraph = $git.paragraph;
         proficiencyHeight = "75%";
         barColor = "#F05032";
         break;
+
       case "wordpress":
+        logo = $wordpress.logo;
+        altName = $wordpress.altName;
         title = $wordpress.title;
         paragraph = $wordpress.paragraph;
         proficiencyHeight = "85%";
         barColor = "#21759B";
         break;
+
       case "gsap":
+        logo = $gsap.logo;
+        altName = $gsap.altName;
         title = $gsap.title;
         paragraph = $gsap.paragraph;
         proficiencyHeight = "90%";
         barColor = "#88CE02";
         break;
+
       case "others":
+        logo = $others.logo;
+        altName = $others.altName;
         title = $others.title;
         paragraph = $others.paragraph;
         proficiencyHeight = "50%";
         barColor = "#64748B";
         break;
+
       default:
+        logo = "";
+        altName = "";
         title = "Lorem, ipsum.";
         paragraph =
           "Lorem ipsum dolor sit amet consectetur adipisicing elit...";
@@ -224,6 +275,8 @@ $(document).ready(function () {
     if (splitPara) splitPara.revert();
 
     // 2. Cache elements and update HTML content
+    const $logo = $detailDisplay.find(".tools_detail_logo").attr("src", logo);
+    const $altName = $detailDisplay.find(".tools_detail_logo").attr("alt", altName);
     const $title = $detailDisplay.find(".tools_detail_ttl").html(title);
     const $para = $detailDisplay.find(".tools_detail_para").html(paragraph);
     const barEl = $detailDisplay.find(".proficiency_bar")[0];
@@ -240,6 +293,11 @@ $(document).ready(function () {
     // 4. Run a fresh GSAP timeline (Animates bar, counter, and text simultaneously)
     currentTimeline = gsap
       .timeline()
+      .fromTo(
+        ".tools_detail_logo",
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.inOut" }
+      )
       // Animate the bar height and color from 0%
       .fromTo(
         barEl,
@@ -250,6 +308,7 @@ $(document).ready(function () {
           duration: 1,
           ease: "power2.inOut",
         },
+        0,
       )
       // Animate the percentage number counting up from 0 to the target value
       .to(
@@ -268,14 +327,14 @@ $(document).ready(function () {
       .fromTo(
         splitTitle.chars,
         { opacity: 0 },
-        { opacity: 1, duration: 0.3, stagger: 0.1, ease: "power1.inOut" },
+        { opacity: 1, duration: 0.2, stagger: 0.1, ease: "power1.inOut" },
         "-=0.3",
       )
       // Animate paragraph text
       .fromTo(
         splitPara.chars,
         { opacity: 0 },
-        { opacity: 1, duration: 0.1, stagger: 0.02, ease: "power1.inOut" },
+        { opacity: 1, duration: 0.1, stagger: 0.01, ease: "power1.inOut" },
         "-=0.3",
       );
   }
@@ -304,4 +363,42 @@ $(document).ready(function () {
       slideChangeTransitionEnd: updateToolDetail,
     },
   });
+
+  function updateSwiperSlides() {
+    if (window.innerWidth >= 768) {
+      if (window.innerHeight < 480) {
+        swiper.params.slidesPerView = 3;
+      } else if (window.innerHeight < 568) {
+        swiper.params.slidesPerView = 3.5;
+      } else if (window.innerHeight < 640) {
+        swiper.params.slidesPerView = 4;
+      } else {
+        swiper.params.slidesPerView = 5;
+      }
+    } else {
+      swiper.params.spaceBetween = 0;
+      if (window.innerHeight < 400) {
+        swiper.params.slidesPerView = 3.5;
+      } else if (window.innerHeight < 440) {
+        swiper.params.slidesPerView = 4;
+      } else {
+        swiper.params.slidesPerView = 5;
+      }
+    }
+
+    swiper.update();
+  }
+
+  updateSwiperSlides();
+
+  window.addEventListener("resize", updateSwiperSlides);  
 });
+
+console.table(
+  [...document.querySelectorAll("a")].map((a) => ({
+    href: a.href,
+    text: a.textContent.trim(),
+    parent: a.parentElement.className,
+    outerHTML: a.outerHTML,
+  }))
+);

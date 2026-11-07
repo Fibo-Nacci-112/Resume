@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
   emailjs.init({
     publicKey: "KNzIBexpfnNcvwCQF",
     blockHeadless: true,          // Blocks automated script bots (Selenium, Puppeteer)
-    // limitRate: {
-    //   throttle: 60000,            // Limits submissions to 1 per minute per user session
-    // },
+    limitRate: {
+      throttle: 30000,            // Limits submissions to 1 per minute per user session
+    },
   });
 
   const form = document.getElementById('contact-form');
@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 3. Security Check: Block HTML Injection (< or >)
-    const injectionPattern = /[<>]/;
+    c
     if (injectionPattern.test(messageInput.value) || injectionPattern.test(companyInput.value)) {
-      alert('For security reasons, please avoid using < or > in your input.');
+      alert('Please avoid using < or > in your inputs.');
       return;
     }
 

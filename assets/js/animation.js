@@ -1,5 +1,9 @@
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
+ScrollTrigger.config({
+  ignoreMobileResize: true,
+});
+
 $(document).ready(function () {
   // Smooth scroll with Lenis
   const lenis = new Lenis({
@@ -131,7 +135,7 @@ $(document).ready(function () {
   const horiTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".hori_sect",
-      start: window.innerWidth >= 768 ? "top 70px" : "top 60px",
+      start: () => window.innerWidth >= 768 ? "top 70px" : "top 60px",
 
       end: () =>
         "+=" +
@@ -170,8 +174,9 @@ $(document).ready(function () {
     ease: "none"
   }, 0);
   // Horizontal Scroll
-
+  
 });
-window.addEventListener("resize", () => {
-  ScrollTrigger.refresh();
+
+ScrollTrigger.config({
+  ignoreMobileResize: true,
 });

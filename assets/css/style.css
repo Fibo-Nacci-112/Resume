@@ -464,7 +464,7 @@
   height: 100%;
   justify-content: space-between;
   padding: 0 max(20px, calc((100vw - 1200px) / 2));
-  max-height: 640px;
+  max-height: 540px;
   gap: max(20px);
   position: relative;
 }
@@ -557,6 +557,10 @@
 @media screen and (max-width: 767px) {
   .hori_ttl {
     font-size: 36px;
+  }
+
+  .hori_row {
+    max-height: 440px;
   }
 
   .hori_info {

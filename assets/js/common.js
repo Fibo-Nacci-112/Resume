@@ -94,6 +94,30 @@ $(document).ready(function () {
         0,
       )
       .to(
+        ".nav_list",
+        {
+          width: "60px",
+          flexDirection: "column",
+          gap: "10px",
+          pointerEvents: "none",
+          padding: "10px"
+        },
+        0
+      )
+      .to(
+        ".nav_list li a",
+        {
+          width: "35px",
+          height: "2px",
+          backgroundColor: "#000",
+          fontSize: "0",
+          color: "transparent",
+          overflow: "hidden",
+          gap: "10px",
+        },
+        0
+      )
+      .to(
         ".header_logo",
         {
           width: "60px",
@@ -377,12 +401,12 @@ $(document).ready(function () {
       }
     } else {
       swiper.params.spaceBetween = 0;
-      if (window.innerHeight < 400) {
-        swiper.params.slidesPerView = 3.5;
-      } else if (window.innerHeight < 440) {
+      if (window.innerHeight < 640) {
+        swiper.params.slidesPerView = 3;
+      } else if (window.innerHeight <840) {
         swiper.params.slidesPerView = 4;
       } else {
-        swiper.params.slidesPerView = 5;
+        swiper.params.slidesPerView = 4;
       }
     }
 
@@ -402,3 +426,7 @@ console.table(
     outerHTML: a.outerHTML,
   }))
 );
+
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
+});

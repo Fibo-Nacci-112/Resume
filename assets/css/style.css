@@ -234,9 +234,25 @@
 }
 
 @media screen and (max-width: 767px) {
+  .tools_sect_wrp {
+    top: 60px;
+    height: calc(100svh - 60px);
+    padding: 20px 0;
+  }
+
+  .tools_container {
+    flex-direction: column;
+    align-items: end;
+  }
+
   .tools_preview {
     font-size: 16px;
-    padding: 10px;
+    padding: 8px 10px;
+    width: 100%;
+  }
+
+  .tools_slide:not(.swiper-slide-active) {
+    transform-origin: right;
   }
 
   .tools_detail {
@@ -244,10 +260,15 @@
     max-height: calc(100svh - 180px);
     overflow: hidden;
     box-sizing: border-box;
+    width: 100%;
+    max-height: unset;
+    height: 60svh;
   }
   
   .tools-swiper {
-    max-height: 300px;
+    max-height: unset;
+    height: calc(40svh - 60px);
+    width: 60%;
   }
 }
 /* #endregion tools section */
@@ -388,10 +409,12 @@
 
   .projects_grid {
     gap: 10px;
+    grid-template-columns: 1fr;
   }
 
   .projects_link {
     font-size: 16px;
+    padding: 15px 20px;
   }
 }
 
@@ -441,7 +464,7 @@
   height: 100%;
   justify-content: space-between;
   padding: 0 max(20px, calc((100vw - 1200px) / 2));
-  max-height: 430px;
+  max-height: 640px;
   gap: max(20px);
   position: relative;
 }
@@ -454,8 +477,9 @@
   position: relative;
   z-index: 2;
   padding: 0 40px;  
-  width: 160px;
-  height: 100px;
+  width: 30vw;
+  max-width: 300px;
+  height: 18svh;
   background-color: #fff;
   border-radius: 10px;
   display: flex;
@@ -471,7 +495,7 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  left: calc(100% + 30px);
+  left: 100%;
 }
 
 .hori_start span {
@@ -489,7 +513,7 @@
 
 .hori_blk::before {
   content: "";
-  width: 800px;
+  width: 46vw;
   height: 3px;
   background-color: #444;
   position: absolute;
@@ -510,9 +534,9 @@
 .hori_year {
   background-color: #fff;
   color: #000;
-  max-width: 150px;
-  width: 100%;
-  aspect-ratio: 1 / 0.8;
+  max-width: 300px;
+  width: 30vw;
+  height: 36svh;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -531,8 +555,16 @@
 }
 
 @media screen and (max-width: 767px) {
+  .hori_ttl {
+    font-size: 36px;
+  }
+
   .hori_info {
     font-size: 16px;
+  }
+
+  .nav_list li {
+    height: unset;
   }
 }
 /* #endregion horizontal section end */

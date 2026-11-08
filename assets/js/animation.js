@@ -131,7 +131,7 @@ $(document).ready(function () {
   const horiTimeline = gsap.timeline({
     scrollTrigger: {
       trigger: ".hori_sect",
-      start: "top 70px",
+      start: window.innerWidth >= 768 ? "top 70px" : "top 60px",
 
       end: () =>
         "+=" +
@@ -171,7 +171,7 @@ $(document).ready(function () {
   }, 0);
   // Horizontal Scroll
 
-  window.addEventListener("resize", () => {
-    ScrollTrigger.refresh();
-  });
+});
+window.addEventListener("resize", () => {
+  ScrollTrigger.refresh();
 });

@@ -17,7 +17,7 @@ $(document).ready(function () {
     lenis.raf(time * 3000);
   });
 
-  gsap.ticker.lagSmoothing(1000);
+  gsap.ticker.lagSmoothing(1500);
   // Smooth scroll with Lenis
 
   // Projects section

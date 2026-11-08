@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
   // SCROLL TO TOP ON REFRESH
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
@@ -403,10 +404,12 @@ $(document).ready(function () {
       swiper.params.spaceBetween = 0;
       if (window.innerHeight < 640) {
         swiper.params.slidesPerView = 3;
+      } else if (window.innerHeight < 700) {
+        swiper.params.slidesPerView = 3.5;
       } else if (window.innerHeight <840) {
         swiper.params.slidesPerView = 4;
       } else {
-        swiper.params.slidesPerView = 4;
+        swiper.params.slidesPerView = 4.5;
       }
     }
 

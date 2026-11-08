@@ -237,7 +237,7 @@
   .tools_sect_wrp {
     top: 60px;
     height: calc(100svh - 60px);
-    padding: 20px 0;
+    padding: 20px 0 40px;
   }
 
   .tools_container {

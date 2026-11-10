@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   // SCROLL TO TOP ON REFRESH
   if ("scrollRestoration" in history) {
     history.scrollRestoration = "manual";
@@ -76,14 +75,22 @@ $(document).ready(function () {
       );
   } else {
     headerTimeline
-      .to(".header_left", {
-        top: "50%",
-        left: "20px",
-        gap: "10px",
-        x: 0,
-        yPercent: -50,
-        xPercent: 0,
-      })
+      .fromTo(
+        ".header_left",
+        {
+          top: "30svh",
+          left: "50%",
+          xPercent: "-50%",
+        },
+        {
+          top: "50%",
+          left: "20px",
+          gap: "10px",
+          x: 0,
+          yPercent: -50,
+          xPercent: 0,
+        },
+      )
       .to(
         ".header_right",
         {
@@ -101,22 +108,24 @@ $(document).ready(function () {
           flexDirection: "column",
           gap: "10px",
           pointerEvents: "none",
-          padding: "10px"
+          padding: "10px",
+          borderRadius: "100vmax",
         },
-        0
+        0,
       )
       .to(
         ".nav_list li a",
         {
-          width: "35px",
-          height: "2px",
+          width: "30px",
+          height: "4px",
           backgroundColor: "#000",
           fontSize: "0",
           color: "transparent",
           overflow: "hidden",
-          gap: "10px",
+          gap: "2px",
+          borderRadius: "2px",
         },
-        0
+        0,
       )
       .to(
         ".header_logo",
@@ -218,7 +227,6 @@ $(document).ready(function () {
 
     let logo, altName, title, paragraph, proficiencyHeight, barColor;
 
-
     switch (toolKey) {
       case "html":
         logo = $html.logo;
@@ -301,7 +309,9 @@ $(document).ready(function () {
 
     // 2. Cache elements and update HTML content
     const $logo = $detailDisplay.find(".tools_detail_logo").attr("src", logo);
-    const $altName = $detailDisplay.find(".tools_detail_logo").attr("alt", altName);
+    const $altName = $detailDisplay
+      .find(".tools_detail_logo")
+      .attr("alt", altName);
     const $title = $detailDisplay.find(".tools_detail_ttl").html(title);
     const $para = $detailDisplay.find(".tools_detail_para").html(paragraph);
     const barEl = $detailDisplay.find(".proficiency_bar")[0];
@@ -321,7 +331,7 @@ $(document).ready(function () {
       .fromTo(
         ".tools_detail_logo",
         { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.inOut" }
+        { opacity: 1, duration: 0.3, ease: "power2.inOut" },
       )
       // Animate the bar height and color from 0%
       .fromTo(
@@ -352,7 +362,7 @@ $(document).ready(function () {
       .fromTo(
         splitTitle.chars,
         { opacity: 0 },
-        { opacity: 1, duration: 0.2, stagger: 0.1, ease: "power1.inOut" },
+        { opacity: 1, duration: 0.1, stagger: 0.1, ease: "power1.inOut" },
         "-=0.3",
       )
       // Animate paragraph text
@@ -368,7 +378,6 @@ $(document).ready(function () {
     direction: "vertical",
     slidesPerView: 5,
     centeredSlides: true,
-    spaceBetween: 20,
     loop: true,
     mousewheel: true,
 
@@ -390,27 +399,8 @@ $(document).ready(function () {
   });
 
   function updateSwiperSlides() {
-    if (window.innerWidth >= 768) {
-      if (window.innerHeight < 480) {
-        swiper.params.slidesPerView = 3;
-      } else if (window.innerHeight < 568) {
-        swiper.params.slidesPerView = 3.5;
-      } else if (window.innerHeight < 640) {
-        swiper.params.slidesPerView = 4;
-      } else {
-        swiper.params.slidesPerView = 5;
-      }
-    } else {
-      swiper.params.spaceBetween = 0;
-      if (window.innerHeight < 640) {
-        swiper.params.slidesPerView = 3;
-      } else if (window.innerHeight < 700) {
-        swiper.params.slidesPerView = 3.5;
-      } else if (window.innerHeight <840) {
-        swiper.params.slidesPerView = 4;
-      } else {
-        swiper.params.slidesPerView = 4.5;
-      }
+    if (window.innerWidth < 768) {
+      swiper.params.slidesPerView = 4;
     }
 
     swiper.update();
@@ -418,7 +408,7 @@ $(document).ready(function () {
 
   updateSwiperSlides();
 
-  window.addEventListener("resize", updateSwiperSlides);  
+  window.addEventListener("resize", updateSwiperSlides);
 });
 
 console.table(
@@ -427,7 +417,7 @@ console.table(
     text: a.textContent.trim(),
     parent: a.parentElement.className,
     outerHTML: a.outerHTML,
-  }))
+  })),
 );
 
 window.addEventListener("resize", () => {

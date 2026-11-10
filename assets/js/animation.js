@@ -57,7 +57,6 @@ $(document).ready(function () {
         },
       },
     );
-
   }
 
   // gsap.fromTo(
@@ -132,49 +131,64 @@ $(document).ready(function () {
   //
 
   // Horizontal Scroll
-  const horiTimeline = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".hori_sect",
-      start: () => window.innerWidth >= 768 ? "top 70px" : "top 60px",
+  const mm = gsap.matchMedia();
 
-      end: () =>
-        "+=" +
-        (document.querySelector(".hori_scroll").scrollWidth -
-          window.innerWidth),
+  mm.add("(min-width: 768px)", () => {
+    const el = document.querySelector(".rect_path");
 
-      pin: true,
-      scrub: 1,
-      invalidateOnRefresh: true,
-    },
+    const horiTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hori_sect",
+        start: "top 70px",
+
+        end: () =>
+          "+=" +
+          (document.querySelector(".hori_scroll").scrollWidth -
+            window.innerWidth),
+
+        pin: true,
+        scrub: 1,
+        invalidateOnRefresh: true,
+      },
+    });
+
+    horiTimeline.to(
+      ".hori_scroll",
+      {
+        x: () =>
+          -(
+            document.querySelector(".hori_scroll").scrollWidth -
+            window.innerWidth
+          ),
+        ease: "none",
+      },
+      0,
+    );
+
+    horiTimeline.to(
+      ".hori_ttl",
+      {
+        x: () =>
+          document.querySelector(".hori_scroll").scrollWidth -
+          window.innerWidth,
+        ease: "none",
+      },
+      0,
+    );
+
+    horiTimeline.to(
+      ".rect_move",
+      {
+        x: () => {
+          const fontSize = parseFloat(window.getComputedStyle(el).fontSize);
+
+          return el.clientWidth - 0.55 * fontSize;
+        },
+        ease: "none",
+      },
+      0,
+    );
   });
-
-  horiTimeline.to(".hori_scroll", {
-    x: () =>
-      -(document.querySelector(".hori_scroll").scrollWidth - window.innerWidth),
-    ease: "none",
-  });
-
-  horiTimeline.to(
-    ".hori_ttl",
-    {
-      x: () =>
-        document.querySelector(".hori_scroll").scrollWidth - window.innerWidth,
-      ease: "none",
-    },
-    0,
-  );
-  const el = document.querySelector(".rect_path");
-  const computedFontSize = parseFloat(window.getComputedStyle(el).fontSize);
-  const containerWidth = el.clientWidth - (0.55 * computedFontSize);
-
-  horiTimeline.to(".rect_move", {
-    x: () => {
-      return containerWidth;
-    },
-    ease: "none"
-  }, 0);
-  // Horizontal Scroll
-  
 });
 
 ScrollTrigger.config({

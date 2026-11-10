@@ -391,6 +391,14 @@
 }
 
 @media screen and (max-width: 767px) {
+  .projects_sect {
+    max-height: 800px;
+  }
+
+  .projects_bg {
+    max-height: 800px;
+  }
+
   .projects_ttl {
     font-size: 40px;
   }

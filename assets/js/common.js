@@ -131,15 +131,15 @@ $(document).ready(function () {
       "I am familiar with various auxiliary tools and workflows that streamline modern web development.",
   };
   const $react = {
-    logo: "./assets/images/others.svg",
-    altName: "Other Tools",
+    logo: "./assets/images/react.svg",
+    altName: "React",
     title: "Other Tools",
     paragraph:
       "I am familiar with various auxiliary tools and workflows that streamline modern web development.",
   };
   const $typescript = {
-    logo: "./assets/images/others.svg",
-    altName: "Other Tools",
+    logo: "./assets/images/typescript.svg",
+    altName: "Typescript",
     title: "Other Tools",
     paragraph:
       "I am familiar with various auxiliary tools and workflows that streamline modern web development.",
@@ -219,6 +219,24 @@ $(document).ready(function () {
         altName = $others.altName;
         title = $others.title;
         paragraph = $others.paragraph;
+        proficiencyHeight = "50%";
+        barColor = "#64748B";
+        break;
+      
+      case "react":
+        logo = $react.logo;
+        altName = $react.altName;
+        title = $react.title;
+        paragraph = $react.paragraph;
+        proficiencyHeight = "50%";
+        barColor = "#64748B";
+        break;
+      
+      case "typescript":
+        logo = $typescript.logo;
+        altName = $typescript.altName;
+        title = $typescript.title;
+        paragraph = $typescript.paragraph;
         proficiencyHeight = "50%";
         barColor = "#64748B";
         break;
@@ -306,8 +324,9 @@ $(document).ready(function () {
   }
 
   const swiper = new Swiper(".tools-swiper", {
-    direction: "vertical",
-    slidesPerView: 5,
+    // Default settings for mobile screens (under 768px)
+    direction: "horizontal", 
+    slidesPerView: 2.5,
     centeredSlides: true,
     loop: true,
     mousewheel: true,
@@ -315,6 +334,15 @@ $(document).ready(function () {
     autoplay: {
       delay: 3000,
       disableOnInteraction: true,
+    },
+    
+    // Responsive breakpoints (768px and up)
+    breakpoints: {
+      768: {
+        direction: "vertical",
+        slidesPerView: 6,
+        spaceBetween: 0,
+      }
     },
 
     on: {
@@ -327,7 +355,7 @@ $(document).ready(function () {
       },
       slideChangeTransitionEnd: updateToolDetail,
     },
-  });
+});
 
   function updateSwiperSlides() {
     if (window.innerWidth < 768) {

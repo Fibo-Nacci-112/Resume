@@ -99,19 +99,19 @@
     height: 80%;
     width: 35%;
     -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 40%,
-    black 60%,
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    black 40%,
-    black 60%,
-    transparent 100%
-  );
+      to bottom,
+      transparent 0%,
+      black 40%,
+      black 60%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to bottom,
+      transparent 0%,
+      black 40%,
+      black 60%,
+      transparent 100%
+    );
 }
 
 .tools_slide {
@@ -120,7 +120,7 @@
     transition: transform 0.3s ease;
 }
 
-.tools_slide:not(.swiper-slide-active) {
+.tools_slide.swiper-slide:not(.swiper-slide-active) {
   transform: scale(0.8);
 }
 
@@ -243,8 +243,8 @@
     width: 100%;
   }
 
-  .tools_slide:not(.swiper-slide-active) {
-    transform-origin: right;
+  .tools_slide.swiper-slide:not(.swiper-slide-active) {
+    transform: scale(0.8);
   }
 
   .tools_detail {
@@ -259,8 +259,23 @@
   
   .tools-swiper {
     max-height: unset;
-    width: 60%;
-    height: 180px;
+    /* width: 60%; */
+    width: 100%;
+    height: auto;
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 40%,
+      black 60%,
+      transparent 100%
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 40%,
+      black 60%,
+      transparent 100%
+    );
   }
 }
 /* #endregion tools section */
